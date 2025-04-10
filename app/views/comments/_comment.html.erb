@@ -1,0 +1,11 @@
+<% bg_color = is_owner ? 'bg-gray-100' :  'bg-blue-100' %>
+<ul class="mb-6 list-none text-md">
+    <li class="mb-2">
+    <blockquote class="p-4 border-s-4 border-gray-300 <%= bg_color %> dark:border-gray-500 dark:bg-gray-800">
+        <p class="font-medium leading-relaxed text-gray-900 dark:text-white">
+            <%= comment.body %>
+        </p>
+    </blockquote>
+    </li>
+    <li class="<%= !is_owner ? 'text-right' : 'text-left' %>"><%= comment.user.email %> | <%= comment.created_at.strftime("%b %d, %Y at %I:%M %p") %><li>
+</ul>

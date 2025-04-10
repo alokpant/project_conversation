@@ -1,0 +1,27 @@
+<h1 class="text-2xl font-semibold mb-4"><%= @project.title %></h1>
+<%= render "status", project: @project, status_change: @status_change || StatusChange.new, can_update: allowed_to?(:update?, @project)  %>
+
+<div class="mt-6">
+  <h2 class="text-xl font-semibold mb-2">Conversation History</h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+    <div class="space-y-4 mb-6">
+      <% user_id = @project.user_id %>
+      <% @project.comments.reverse.each do |comment| %>
+        <%= render "comments/comment", comment:, is_owner: user_id === comment.user_id %>
+      <% end %>
+
+      <!-- Comments form always visible -->
+      <%= render "comments/form", project: @project, comment: Comment.new %>
+    </div>
+
+    <div class="space-y-4 mb-6">
+      <% @project.status_changes.reverse.each do |change| %>
+        <div class="bg-yellow-100 p-2 rounded text-sm">
+          🔄 <strong><%= change.created_at %></strong>: status changed from
+          <strong><%= change.previous_status %></strong> to <strong><%= change.new_status %></strong>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

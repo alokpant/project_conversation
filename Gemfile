@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source "https://rubygems.org"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
@@ -71,3 +73,5 @@ group :test do
 end
 
 gem "devise", "~> 4.9"
+
+gem "tailwindcss-ruby", "~> 4.1"

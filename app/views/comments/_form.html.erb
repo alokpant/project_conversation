@@ -1,0 +1,18 @@
+<%= form_with model: [@project, @project.comments.build], url: project_comments_path(@project), method: :post, data: { turbo: false } do |f| %>
+  <% if @comment.errors.any? %>
+    <div class="mt-2 text-red-600">
+      <ul>
+        <% @comment.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="flex w-full items-center space-x-4">
+    <%= f.label :body, 'Comment', class: "block mr-3 font-medium" %>
+    <%= f.text_area :body, class: "border rounded p-2 w-full", placeholder: "Add a comment..." %>
+  </div>
+
+  <%= f.submit 'Add Comment', class: 'mt-2 bg-blue-500 text-white px-4 py-2 rounded' %>
+<% end %>

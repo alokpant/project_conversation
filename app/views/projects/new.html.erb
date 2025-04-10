@@ -1,0 +1,19 @@
+<h1 class="text-2xl font-semibold mb-4">Create a New Project</h1>
+
+<%= form_with model: @project, local: true do |f| %>
+  <div class="bg-white p-6 rounded shadow">
+    <div class="mb-4">
+      <%= f.label :title, class: "block mb-1 font-medium" %>
+      <%= f.text_field :title, class: "w-full border rounded p-2" %>
+    </div>
+
+    <div class="mb-4">
+      <%= f.label :status, class: "block mb-1 font-medium" %>
+      <%= f.select :status, Project::STATUSES, {}, class: "w-full border rounded p-2" %>
+    </div>
+
+    <div class="mb-4">
+      <%= f.submit "Create Project", class: "bg-green-600 text-white px-4 py-2 rounded" %>
+    </div>
+  </div>
+<% end %>

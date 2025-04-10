@@ -1,0 +1,26 @@
+<%= form_with model: [project, status_change], url: project_status_changes_path(project), method: :post, data: { turbo: true } do |f| %>
+  <% if status_change.errors.any? %>
+    <div class="mt-2 text-red-600">
+      <ul>
+        <% status_change.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="flex w-full items-center space-x-4">
+    <%= f.label :new_status, 'Status', class: "text-bold block mr-3 font-medium" %>
+
+    <% if can_update %>
+      <%= f.select :new_status, Project::STATUSES,
+          { selected: project.status }, 
+          class: "border rounded p-2 #{ can_update ? 'bg-white' : 'bg-gray-200 cursor-not-allowed pointer-events-none' }",
+          onchange: can_update ? "this.form.requestSubmit()" : nil %>
+    <% else %>
+      <p class="text-sm text-gray-600"><%= project.status.upcase %></p>
+    <% end %>
+
+    <%= f.hidden_field :previous_status, value: project.status %>
+  </div>
+<% end %>
