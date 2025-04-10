@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   # Devise modules
   devise :database_authenticatable, :registerable,

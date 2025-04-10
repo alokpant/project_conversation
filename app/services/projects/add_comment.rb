@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 # Service class to add a comment to a project.
-# 
+#
 # This service is responsible for creating a new comment
-# for a given project by a specific user with a body 
+# for a given project by a specific user with a body
 # provided by the user.
 # @example:
 #   project = Project.find(1)
