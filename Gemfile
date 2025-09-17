@@ -52,7 +52,7 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
 
   # Create fake data
-  gem "faker", "~> 3.2"
+  gem "faker", "~> 3.5"
 
   # Use FactoryBot for easy Entities creation
   gem "factory_bot_rails"
